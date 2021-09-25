@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EEEEEE;
+    font-family: Comic Sans MS, cursive;
+}
+
+.game {
+    display: flex;
+    flex-direction: row;
+    margin-left: calc(50% - 300px / 2);
+}
+
+.status {
+    margin-bottom: 10px;
+}
+
+.square-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 300px;
+    height: 300px;
+}
+
+.square {
+    background: white;
+    border: 1px solid darkblue;
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 34px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 33%;
+    height: 33%;
+    cursor: pointer;
+}
+
+.square:active {
+    background: crimson;
+}
+
+.game-info {
+    margin-left: 20px;
+    font-size: 2em;
+}
+
+.disabled, .disabled:active {
+    background-color: lightgrey;
+    cursor: not-allowed;
+}

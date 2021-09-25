@@ -1,0 +1,45 @@
+import {createSelector} from 'reselect'
+
+const gameDataSelector = state => state.game;
+
+
+export const squares = createSelector(
+    gameDataSelector,
+    state => state.squares
+);
+
+
+export const nowPlayer = createSelector(
+    gameDataSelector,
+    state => state.nowPlayer
+);
+
+const calculateWinner = squares => { //взял с инета, дописал только проверку на ничью,и немного своей логики.
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            console.log(squares[a]);
+            return squares[a];
+        }
+    }
+    const check = squares.filter(symbol => symbol === null);
+    if (check.length === 0) {
+        return 'TIE';
+    }
+    return null;
+};
+
+export const hasWinner = createSelector(
+    gameDataSelector,
+    state => calculateWinner(state.squares)
+);
